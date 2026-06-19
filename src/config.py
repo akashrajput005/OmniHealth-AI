@@ -61,39 +61,69 @@ DEMO_DATA = {
 # Clinical Recommendations for At-Risk Patients
 CLINICAL_RECOMMENDATIONS = {
     "Diabetes": {
-        "Diet": [
-            "Focus on high-fiber, low-glycemic foods (whole grains, leafy greens).",
-            "Monitor carbohydrate intake and avoid sugary beverages.",
-            "Incorporate lean proteins (fish, skinless poultry, beans)."
+        "Eat": [
+            "Leafy greens, spinach, broccoli, kale.",
+            "Whole grains (quinoa, brown rice, oats).",
+            "Lean proteins (fish, chicken breast, tofu, beans)."
         ],
-        "Exercise": [
-            "Aim for 150 minutes of moderate aerobic activity per week.",
-            "Include strength training at least twice a week.",
-            "Consistent daily movement (e.g., 30-minute brisk walks)."
+        "DoNotEat": [
+            "Sugary beverages, sodas, sweetened juices.",
+            "Refined carbs (white bread, white pasta, pastries).",
+            "High-trans-fat fried foods and processed meats."
+        ],
+        "Do": [
+            "Engage in 150 minutes of moderate aerobic activity per week.",
+            "Perform strength training at least twice a week.",
+            "Monitor blood sugar levels regularly before and after meals."
+        ],
+        "DoNotDo": [
+            "Avoid sitting for prolonged periods; stand/stretch every hour.",
+            "Do not skip meals or let your glucose drop excessively.",
+            "Avoid strenuous workouts if your blood sugar is extremely high (>250 mg/dl)."
         ]
     },
     "Heart Disease": {
-        "Diet": [
-            "Adopt a Mediterranean-style diet (olive oil, nuts, seeds).",
-            "Reduce saturated fats and excess sodium (salt).",
-            "Increase intake of Omega-3 fatty acids (fatty fish)."
+        "Eat": [
+            "Mediterranean fats (olive oil, avocados, nuts, seeds).",
+            "Omega-3 rich foods (salmon, mackerel, walnuts).",
+            "High-fiber oats, barley, and colorful berries."
         ],
-        "Exercise": [
-            "Prioritize consistent aerobic exercises like swimming or cycling.",
-            "Monitor heart rate during physical activity.",
-            "Avoid sudden high-intensity bursts without medical guidance."
+        "DoNotEat": [
+            "Excessive table salt (sodium limit under 1,500mg/day).",
+            "Saturated fats, butter, lard, heavy creams.",
+            "Ultra-processed packaged snacks and high-cholesterol foods."
+        ],
+        "Do": [
+            "Prioritize daily low-impact cardio like walking, swimming, or cycling.",
+            "Monitor blood pressure and resting heart rate.",
+            "Practice stress-relief methods (deep breathing, meditation)."
+        ],
+        "DoNotDo": [
+            "Do not engage in sudden, high-intensity heavy weightlifting.",
+            "Avoid tobacco, smoking, and heavy alcohol consumption.",
+            "Do not ignore symptoms like chest tightness, jaw pain, or shortness of breath."
         ]
     },
     "Parkinson's": {
-        "Diet": [
-            "Maintain a balanced diet rich in antioxidants (berries, greens).",
-            "Ensure adequate fiber and fluid intake to support digestion.",
-            "Consider small, frequent meals if swallowing becomes difficult."
+        "Eat": [
+            "Antioxidant-rich foods (blueberries, dark chocolate, green tea).",
+            "High-fiber foods to support gut motility and prevent constipation.",
+            "Adequate fluids (at least 8 glasses of water daily)."
         ],
-        "Exercise": [
-            "Focus on balance and flexibility (Tai Chi, Yoga).",
-            "Functional movements like big-step walking.",
-            "Speech exercises to maintain vocal muscle strength."
+        "DoNotEat": [
+            "Excessive protein right before taking Levodopa medication (interferes with absorption).",
+            "Hard-to-chew dry foods that pose choking risks.",
+            "Highly processed sugars that exacerbate fatigue."
+        ],
+        "Do": [
+            "Focus on exercises improving balance, posture, and flexibility (Tai Chi, Yoga).",
+            "Practice daily loud reading or singing to preserve vocal strength.",
+            "Take big-stepping gait exercises to prevent freezing."
+        ],
+        "DoNotDo": [
+            "Do not rush while walking or turn around quickly (prone to falls).",
+            "Avoid walking in dark or cluttered rooms.",
+            "Do not push through physical exhaustion; prioritize scheduled rests."
         ]
     }
 }
@@ -101,39 +131,65 @@ CLINICAL_RECOMMENDATIONS = {
 # Wellness Maintenance for Healthy Patients
 HEALTHY_RECOMMENDATIONS = {
     "Diabetes": {
-        "Diet": [
-            "Maintain a balanced intake of complex carbohydrates.",
-            "Prioritize whole fruits over processed juices.",
-            "Keep a consistent meal schedule to stabilize energy."
+        "Eat": [
+            "A colorful variety of fresh vegetables.",
+            "Whole fruits instead of processed juices.",
+            "Legumes, nuts, and healthy complex carbs."
         ],
-        "Exercise": [
-            "Engage in at least 30 minutes of physical activity daily.",
-            "Explore variety: mix cardio, strength, and flexibility.",
-            "Stay active throughout the day (take stairs, short walks)."
+        "DoNotEat": [
+            "Excessive sugary treats and desserts.",
+            "Processed snack foods high in sodium and simple sugars.",
+            "Sugary energy drinks and sweet mixers."
+        ],
+        "Do": [
+            "Maintain at least 30 minutes of physical activity daily.",
+            "Stay active throughout the day (take stairs, short walks).",
+            "Track annual preventive metabolic checkups."
+        ],
+        "DoNotDo": [
+            "Avoid skipping breakfast, which can throw off glucose stability.",
+            "Do not lead a sedentary lifestyle; stand or stretch regularly."
         ]
     },
     "Heart Disease": {
-        "Diet": [
-            "Enjoy a variety of colorful vegetables and fruits.",
-            "Choose whole grains and lean protein sources.",
-            "Limit processed foods and added sugars."
+        "Eat": [
+            "Vibrant, leafy vegetables and colorful berries.",
+            "Whole grains and lean poultry/fish.",
+            "Heart-healthy nuts like almonds and walnuts."
         ],
-        "Exercise": [
-            "Maintain an active lifestyle with regular cardio.",
-            "Incorporate fun activities like hiking or dancing.",
-            "Practice stress-management techniques (meditation)."
+        "DoNotEat": [
+            "Processed deli meats with high preservatives/sodium.",
+            "Excessive fast food and deep-fried dishes.",
+            "Drinks containing high amounts of added sugars."
+        ],
+        "Do": [
+            "Incorporate a mix of cardio and endurance exercises.",
+            "Maintain a consistent sleep cycle (7-8 hours per night).",
+            "Check cholesterol and blood pressure levels annually."
+        ],
+        "DoNotDo": [
+            "Do not stay seated for hours without breaks.",
+            "Avoid high chronic stress without pursuing coping techniques."
         ]
     },
     "Parkinson's": {
-        "Diet": [
-            "Eat a diverse, nutrient-dense diet.",
-            "Stay hydrated—aim for 8 glasses of water daily.",
-            "Incorporate brain-healthy fats like walnuts and avocado."
+        "Eat": [
+            "Diverse, nutrient-dense diet rich in vitamins.",
+            "Healthy omega-3 fatty fats (avocados, walnuts).",
+            "Adequate daily hydration (water, herbal teas)."
         ],
-        "Exercise": [
-            "Keep learning new physical skills to challenge the brain.",
-            "Regular stretching to maintain full range of motion.",
-            "Participate in social activities or group sports."
+        "DoNotEat": [
+            "Too much saturated fat and processed meats.",
+            "Highly refined flour products."
+        ],
+        "Do": [
+            "Challenge cognitive and motor skills (riddles, coordination sports).",
+            "Engage in routine stretching to maintain range of motion.",
+            "Stay socially connected and active in the community."
+        ],
+        "DoNotDo": [
+            "Do not neglect fine motor practice (writing, drawing).",
+            "Avoid a passive daily routine; stay intellectually stimulated."
         ]
     }
 }

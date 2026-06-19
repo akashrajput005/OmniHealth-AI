@@ -84,4 +84,76 @@ def create_parkinsons_radar(user_data, features):
     )
     return fig
 
+def create_deviation_chart(user_inputs, disease_key):
+    """
+    Creates a Plotly horizontal bar chart showing how much the patient's inputs
+    deviate from healthy levels toward the high-risk averages.
+    """
+    stats = DATASET_STATS.get(disease_key.lower())
+    if not stats:
+        return None
+        
+    healthy = stats['healthy']
+    positive = stats['positive']
+    
+    deviations = []
+    
+    for key, val in user_inputs.items():
+        if key in healthy and key in positive:
+            h_val = healthy[key]
+            p_val = positive[key]
+            diff = p_val - h_val
+            if abs(diff) > 1e-6:
+                # Percentage deviation from healthy toward positive
+                dev = (val - h_val) / diff * 100
+                deviations.append({
+                    "feature": FEATURE_DISPLAY_NAMES.get(key, key),
+                    "deviation": dev,
+                    "val": val,
+                    "healthy_avg": h_val,
+                    "risk_avg": p_val
+                })
+                
+    # Sort by deviation descending (showing largest risk contributors first)
+    deviations = sorted(deviations, key=lambda x: x['deviation'], reverse=True)[:6]
+    
+    if not deviations:
+        return None
+        
+    features = [d['feature'] for d in deviations]
+    values = [d['deviation'] for d in deviations]
+    hover_texts = [
+        f"Value: {d['val']:.3f}<br>Healthy Avg: {d['healthy_avg']:.3f}<br>At-Risk Avg: {d['risk_avg']:.3f}"
+        for d in deviations
+    ]
+    
+    colors = ['#dc3545' if v > 50 else '#ffc107' if v > 20 else '#28a745' for v in values]
+    
+    fig = go.Figure(go.Bar(
+        x=values,
+        y=features,
+        orientation='h',
+        marker_color=colors,
+        text=[f"{v:.1f}%" for v in values],
+        textposition='auto',
+        hoverinfo='text',
+        hovertext=hover_texts
+    ))
+    
+    fig.update_layout(
+        title={
+            'text': "Key Biomarker Deviation Analysis",
+            'y': 0.95,
+            'x': 0.5,
+            'xanchor': 'center',
+            'yanchor': 'top'
+        },
+        xaxis_title="Deviation from Healthy toward High-Risk (%)",
+        yaxis=dict(autorange="reversed"),
+        height=320,
+        margin=dict(l=20, r=20, t=50, b=20)
+    )
+    return fig
+
+
 

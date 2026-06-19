@@ -11,23 +11,62 @@ def load_lottieurl(url: str):
 
 def init_session_state():
     """Initializes session state variables for history and demo mode."""
+    if 'patients' not in st.session_state:
+        st.session_state.patients = {
+            "Aarav Sharma (Cardiac Monitoring)": [
+                {"disease": "Heart Disease", "result": 1, "probability": 0.82, "timestamp": 1},
+                {"disease": "Heart Disease", "result": 1, "probability": 0.68, "timestamp": 2},
+                {"disease": "Heart Disease", "result": 0, "probability": 0.34, "timestamp": 3}
+            ],
+            "Priya Patel (Metabolic Tracking)": [
+                {"disease": "Diabetes", "result": 0, "probability": 0.22, "timestamp": 1},
+                {"disease": "Diabetes", "result": 1, "probability": 0.58, "timestamp": 2},
+                {"disease": "Diabetes", "result": 1, "probability": 0.74, "timestamp": 3},
+                {"disease": "Diabetes", "result": 1, "probability": 0.62, "timestamp": 4}
+            ],
+            "Amit Kumar (Neurological Screening)": [
+                {"disease": "Parkinson's", "result": 0, "probability": 0.15, "timestamp": 1},
+                {"disease": "Parkinson's", "result": 0, "probability": 0.18, "timestamp": 2}
+            ],
+            "New Patient Profile": []
+        }
+    
+    # Prepopulate history list for dashboard cards
     if 'history' not in st.session_state:
         st.session_state.history = []
+        for records in st.session_state.patients.values():
+            st.session_state.history.extend(records)
+            
+    if 'current_patient' not in st.session_state:
+        st.session_state.current_patient = "Aarav Sharma (Cardiac Monitoring)"
     if 'demo_type' not in st.session_state:
         st.session_state.demo_type = None
 
 def track_history(disease, result, probability):
     """Safely updates session history with prediction results."""
-    # Ensure history is initialized
     if 'history' not in st.session_state:
         st.session_state.history = []
-    
-    # Store result
-    st.session_state.history.append({
+    if 'patients' not in st.session_state:
+        init_session_state()
+    if 'current_patient' not in st.session_state:
+        st.session_state.current_patient = list(st.session_state.patients.keys())[0]
+        
+    patient = st.session_state.current_patient
+    if patient not in st.session_state.patients:
+        st.session_state.patients[patient] = []
+        
+    # Default to 1.0 or 0.0 risk probability if not provided (SVM can have None)
+    prob_val = float(probability) if probability is not None else (1.0 if result == 1 else 0.0)
+        
+    record = {
         "disease": disease,
         "result": int(result),
-        "probability": float(probability) if probability is not None else None
-    })
+        "probability": prob_val,
+        "timestamp": len(st.session_state.patients[patient]) + 1
+    }
+    
+    st.session_state.patients[patient].append(record)
+    st.session_state.history.append(record)
 
 def inject_custom_styles():
     """Injects premium CSS for a medical dashboard look."""
@@ -128,13 +167,26 @@ def render_result_card(title, is_positive, probability=None):
             with st.expander(expander_title, expanded=is_positive):
                 rcol1, rcol2 = st.columns(2)
                 with rcol1:
-                    st.markdown("#### 🥗 Nutrition Guide")
-                    for item in recs.get("Diet", []):
-                        st.write(f"- {item}")
+                    st.markdown("### 🥗 Nutrition & Diet Guide")
+                    
+                    st.markdown("##### 🟢 Recommended (Eat)")
+                    for item in recs.get("Eat", []):
+                        st.write(f"✓ {item}")
+                        
+                    st.markdown("##### 🔴 Limit / Avoid (Do Not Eat)")
+                    for item in recs.get("DoNotEat", []):
+                        st.write(f"✗ {item}")
+                        
                 with rcol2:
-                    st.markdown("#### 🏃 Exercise Routine")
-                    for item in recs.get("Exercise", []):
-                        st.write(f"- {item}")
+                    st.markdown("### 🏃 Activity & Vitals Guide")
+                    
+                    st.markdown("##### 🟢 Recommended (Do)")
+                    for item in recs.get("Do", []):
+                        st.write(f"✓ {item}")
+                        
+                    st.markdown("##### 🔴 Precautions (Do Not Do)")
+                    for item in recs.get("DoNotDo", []):
+                        st.write(f"✗ {item}")
 
 def render_categorized_inputs(categories, demo_data=None):
     """Helper to render inputs with human-readable names and high precision."""
