@@ -1,5 +1,7 @@
 # 🏥 OmniHealth AI: Clinical Intelligence Suite
 
+[![Live Demo](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://omnihealth-ai-aawphkdjhm3bzgwfab3rnk.streamlit.app/)
+
 **OmniHealth AI** is a next-generation clinical diagnostic platform designed to provide interactive, accurate, and high-fidelity disease prediction. Transform raw medical data into actionable clinical insights with our state-of-the-art diagnostic suite.
 
 ## 🚀 Key Features
