@@ -102,6 +102,12 @@ if selected == 'Dashboard':
             mime="text/markdown"
         )
         
+        # Display the active care plan for the selected patient based on their latest screening
+        st.markdown("---")
+        st.markdown(f"### 📋 Active Care Plan: **{active_patient}**")
+        latest_rec = patient_records[-1]
+        render_result_card(latest_rec['disease'], latest_rec['result'] == 1, latest_rec['probability'])
+        
     st.markdown("---")
     with st.expander("🧪 Quick-Start Clinic Samples (Demo Data)"):
         st.write("Instant-populate screening forms with pre-set clinical data.")
