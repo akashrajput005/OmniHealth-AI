@@ -1,5 +1,7 @@
 streamlit
 streamlit-option-menu
+streamlit-lottie
 scikit-learn
 numpy
 pandas
+plotly

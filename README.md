@@ -3,12 +3,13 @@
 **OmniHealth AI** is a next-generation clinical diagnostic platform designed to provide interactive, accurate, and high-fidelity disease prediction. Transform raw medical data into actionable clinical insights with our state-of-the-art diagnostic suite.
 
 ## 🚀 Key Features
-- **360-Degree Healthcare Guidance**: Integrated **Clinical Action Plans** for at-risk patients and **Preventive Wellness Plans** for healthy MAINTENANCE.
-- **Clinical Command Center**: A centralized dashboard tracking session-based patient screenings and health trends.
-- **Multi-Disease Intelligence**: Advanced diagnostic modules for **Diabetes**, **Heart Disease**, and **Parkinson's Disease**.
-- **Interactive Visual Analytics Suite**: Integrated **Plotly** Radar charts for acoustic analysis and high-precision Risk Gauges.
-- **One-Click Clinical Hub**: Instantly load pre-verified "Healthy" or "At-Risk" profiles for rapid system demonstration.
-- **Premium Medical UX**: Sleek, modern interface with categorized inputs, Lottie animations, and intuitive diagnostics.
+- **🔬 Explainable AI (XAI)**: Visualizes the **Biomarker Risk Deviation Index** using horizontal Plotly bar charts, comparing patient measurements against clinical datasets' healthy and positive population averages.
+- **🎙️ Acoustic Voice Analyzer Simulator**: Mock waveform processing and vocal feature extraction interface for Parkinson's screening (simulates extraction of Jitter, Shimmer, NHR, and Non-Linear Dynamics).
+- **📋 Allowed/Avoid Patient Action Plans**: Detailed clinical guide tables mapping out exactly **What to Eat (Allowed)**, **Limit / Avoid (Do Not Eat)**, **Recommended Activity (Do)**, and **Precautions (Do Not Do)**.
+- **📈 Longitudinal Patient Ledger**: Supports named patient profiles (e.g. pre-loaded profiles Aarav Sharma, Priya Patel, Amit Kumar) and tracks risk level trends across multiple screening sessions on line charts.
+- **🏥 Clinical Command Center**: A centralized dashboard tracking session-based patient screening logs and overall health score metrics.
+- **One-Click Clinical Hub**: Instantly load pre-verified "Healthy" or "At-Risk" profiles inside an interactive expander panel.
+- **Premium Medical UX**: Sleek, modern interface with categorized inputs, Lottie animations, and custom styling.
 
 ## 🛠️ Technology Stack
 - **Engine**: Python 3.12+
